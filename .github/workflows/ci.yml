@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+  workflow_dispatch:
+
+jobs:
+  stable:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@stable
+    - name: Install e2fslibs
+      run: |
+        sudo apt update
+        sudo apt install -y e2fslibs e2fslibs-dev
+    - name: Build
+      run: cargo build --verbose --target x86_64-unknown-linux-gnu
+    - name: Test
+      run: cargo test --verbose --target x86_64-unknown-linux-gnu
+
+  beta:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@beta
+    - name: Install e2fslibs
+      run: |
+        sudo apt update
+        sudo apt install -y e2fslibs e2fslibs-dev
+    - name: Build
+      run: cargo build --verbose --target x86_64-unknown-linux-gnu
+    - name: Test
+      run: cargo test --verbose --target x86_64-unknown-linux-gnu
+
+  nightly:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@nightly
+    - name: Install e2fslibs
+      run: |
+        sudo apt update
+        sudo apt install -y e2fslibs e2fslibs-dev
+    - name: Build
+      run: cargo build --verbose --target x86_64-unknown-linux-gnu
+    - name: Test
+      run: cargo test --verbose --target x86_64-unknown-linux-gnu
+
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@nightly
+      with:
+        components: clippy
+    - name: Install e2fslibs
+      run: |
+        sudo apt update
+        sudo apt install -y e2fslibs e2fslibs-dev
+    - name: Lint
+      run: cargo clippy --all-targets --all-features -- -D warnings
