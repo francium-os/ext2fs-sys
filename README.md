@@ -3,6 +3,8 @@
 [![CI](https://github.com/francium-os/ext2fs-sys/actions/workflows/ci.yml/badge.svg)](https://github.com/francium-os/ext2fs-sys/actions/workflows/ci.yml)
 [![license](https://img.shields.io/github/license/francium-os/ext2fs-sys.svg)](https://github.com/francium-os/ext2fs-sys/blob/master/LICENSE)
 
+This crate is based on [e2p-sys](https://github.com/michaellass/e2p-sys/).
+
 This crate makes available functionality from libext2fs. The bindings are automatically created by bindgen.
 
 ## Requirements
