@@ -62,7 +62,7 @@ fn main() {
         &mut f,
         "\
 /// A list of all public constants. Can be used to test for the
-/// existence of certain constants in the system's libe2p.
+/// existence of certain constants in the system's libext2fs.
 pub const CONSTANTS: [&str; {}] = {:?};",
         constants.len(),
         constants

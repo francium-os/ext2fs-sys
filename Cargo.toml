@@ -2,7 +2,7 @@
 authors = ["Chloe Bethel <me@chloe-is.online>"]
 build = "build.rs"
 categories = ["external-ffi-bindings", "filesystem", "os::unix-apis"]
-description = "Low level bindings for libe2p (e2fsprogs/e2fslibs), providing functionality for ext2/ext3/ext4 filesystems"
+description = "Low level bindings for libext2fs (e2fsprogs/e2fslibs), providing functionality for ext2/ext3/ext4 filesystems"
 edition = "2021"
 homepage = "https://github.com/francium-os/ext2fs-sys/"
 keywords = ["e2fsprogs", "e2fslibs", "ext2", "ext3", "ext4"]
